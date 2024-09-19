@@ -18,6 +18,15 @@ int main(void) {
 int factorial(int num) {
     assert(num >= 0);
 
-    // TODO
-    return 42;
+    // base case
+    if (num == 1 || num == 0) {
+        return 1;
+    }
+
+    // recursive case
+    // – make the recursive call
+    // - capture that result
+    int res = factorial(num - 1);
+    // - use that result to compute on this level
+    return res * num;
 }
