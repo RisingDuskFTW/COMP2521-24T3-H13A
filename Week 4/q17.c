@@ -10,5 +10,17 @@ struct node {
 
 int BSTNodeLevel(struct node *t, int key) {
     // TODO
-    return 42;
+	struct node *curr = t;
+	int level = 0;
+	while (curr != NULL) {
+		if (key < t->value) {
+			curr = curr->left;
+		} else if (key > t->value) {
+			curr = curr->right;
+		} else {
+			break;
+		}
+		level++;
+	}
+    return level;
 }

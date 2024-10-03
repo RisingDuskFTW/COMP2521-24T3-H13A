@@ -9,6 +9,13 @@ struct node {
 };
 
 int BSTreeCountGreater(struct node *t, int val) {
-    // TODO
-    return 42;
+
+	if (t == NULL) {
+		return 0;
+	}
+	if (val < t->value) {
+		return 1 + BSTreeCountGreater(t->left, val) + BSTreeCountGreater(t->right, val);
+	} else {
+		return BSTreeCountGreater(t->right, val);
+	}
 }

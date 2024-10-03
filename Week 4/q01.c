@@ -25,10 +25,21 @@ void QueueFree(Queue q) {
 }
 
 void QueueEnqueue(Queue q, int item) {
-	// TODO
+	StackPush(q->s1, item);
 }
 
 int QueueDequeue(Queue q) {
-	// TODO
-	return 42;
+	// move everything from s1 to s2
+	while (!StackIsEmpty(q->s1)) {
+		int item = StackPop(q->s1);
+		StackPush(q->s2, item);
+	}
+	// we will be able to remove the item we want
+	int ret = StackPop(q->s2);
+	// move everything back
+	while (!StackIsEmpty(q->s2)) {
+		int item = StackPop(q->s2);
+		StackPush(q->s1, item);
+	}
+	return ret;
 }
